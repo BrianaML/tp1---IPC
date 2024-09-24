@@ -9,7 +9,7 @@ print("Estaras jugando a \"Adivina el Color\"")
 print("Aqui cada numero del 1 al 9 representa un color")
 print("¿Cuantas botellas quiere adivinar? Tenga en cuenta que por cada botella que deba adivinar puede sumar 1000 puntos")
 
-cantidad_de_botellas_ingresadas= int(input("Ingrese la cantidad:"))
+cantidad_de_botellas_ingresadas= int(input("Ingrese la cantidad: "))
 
 print(f"Excelente, los numeros del 1 al {cantidad_de_botellas_ingresadas} han sido ordenados aleatoriamente.")
 print("Usted debera adivinar ese oreden en 10 intentos. Por cada numero adivinado ganara 1000 puntos ;)")
@@ -40,11 +40,11 @@ for i in range(cantidad_de_botellas_ingresadas):
     ayuda_usada.append(False)
 revelacion= [] #Creamos una lista vacia
 for i in range(cantidad_de_botellas_ingresadas):
-    revelacion.append("_")
+    revelacion.append(" _ ")
 
 #BUCLE DEL JUEGO
 while intentos_totales > 0:
-    adivinanza= input("Ingrese su adivinanza:")
+    adivinanza= input("Ingrese su adivinanza: ")
     #HELP ----
     if adivinanza.lower() == "help":
         for i in range(cantidad_de_botellas_ingresadas):
