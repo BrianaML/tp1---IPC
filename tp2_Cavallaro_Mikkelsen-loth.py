@@ -88,7 +88,7 @@ while intentos_totales > 0:
         
         puntaje_total= puntaje_por_botella - puntos_negativos
         intentos_restantes= intentos_totales
-        print("El numero ingresado no contiene todos los numeros del juego o es muy largo.")
+        print("La adivinanza ingresada tiene numeros repetidos.")
         print(f"Pierde el turno. Le quedan {intentos_restantes} intentos")
         continue
     
