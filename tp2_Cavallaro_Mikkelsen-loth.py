@@ -30,7 +30,6 @@ while len(solucion) < cantidad_de_botellas_ingresadas:
     num= str(random.randint(1, cantidad_de_botellas_ingresadas))
     if num not in solucion:
         solucion+= num
-print(solucion)
 #-------------------------------------------------------------------------------------
 '''Contadores para ir restando el numero de intentos'''
 intentos_totales = 10
@@ -40,8 +39,11 @@ intentos_restantes= intentos_totales
 puntaje_por_botella= cantidad_de_botellas_ingresadas*1000
 puntos_negativos= 0 
 puntaje_total = 0
+
+ayuda_usada=False
+juego_terminado=False
 #--------------------------------------------------------------------------------------
-while intentos_totales > 0:
+while intentos_totales > 0 and not juego_terminado:
     adivinanza= input("Ingrese su adivinanza:")
 
     '''Se "penaliza" al user por no ingresar la longitud correcta o estar repetido'''
@@ -77,6 +79,14 @@ while intentos_totales > 0:
     '''Contador para el numero de botellas acertadas'''
     botellas_correctas= 0
     posicion_correcta=0
+    
+    if not ayuda_usada:
+        if adivinanza.lower() == "help":
+            for i in range(1, cantidad_de_botellas_ingresadas):
+                print(f"Revelacion: {solucion[i]}. Le quedan {intentos_restantes} intentos ")
+                ayuda_usada= True
+                intentos_restantes-=1
+                puntos_negativos+=1100
     
     for x in range(cantidad_de_botellas_ingresadas):
         if solucion[x] == adivinanza[x]:
