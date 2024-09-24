@@ -40,12 +40,26 @@ puntaje_por_botella= cantidad_de_botellas_ingresadas*1000
 puntos_negativos= 0 
 puntaje_total = 0
 
-ayuda_usada=False
-juego_terminado=False
+ayuda_usada=[False]*cantidad_de_botellas_ingresadas
+revelacion= ["_ " for _ in range(cantidad_de_botellas_ingresadas)]
 #--------------------------------------------------------------------------------------
-while intentos_totales > 0 and not juego_terminado:
+while intentos_totales > 0:
     adivinanza= input("Ingrese su adivinanza:")
 
+    if adivinanza.lower() == "help":
+        for i in range(cantidad_de_botellas_ingresadas):
+            if not ayuda_usada[i]:
+                revelacion[i]= solucion[i]
+                ayuda_usada[i]= True
+                revelacion_str= " "
+                
+                for caracter in revelacion:
+                    revelacion_str+= caracter
+                    
+                print(f"Revelacion: {revelacion_str}. Le quedan {intentos_totales-1} intentos")
+                puntos_negativos+=100
+                break
+            continue    
     '''Se "penaliza" al user por no ingresar la longitud correcta o estar repetido'''
     if len(adivinanza) != cantidad_de_botellas_ingresadas:
         intentos_totales-= 1
@@ -53,6 +67,7 @@ while intentos_totales > 0 and not juego_terminado:
         
         puntaje_total= puntaje_por_botella - puntos_negativos
         intentos_restantes= intentos_totales
+        
         print("El numero ingresado no contiene todos los numeros del juego o es muy largo.")
         print(f"Pierde el turno. Le quedan {intentos_restantes} intentos")
         continue
@@ -79,15 +94,7 @@ while intentos_totales > 0 and not juego_terminado:
     '''Contador para el numero de botellas acertadas'''
     botellas_correctas= 0
     posicion_correcta=0
-    
-    if not ayuda_usada:
-        if adivinanza.lower() == "help":
-            for i in range(1, cantidad_de_botellas_ingresadas):
-                print(f"Revelacion: {solucion[i]}. Le quedan {intentos_restantes} intentos ")
-                ayuda_usada= True
-                intentos_restantes-=1
-                puntos_negativos+=1100
-    
+
     for x in range(cantidad_de_botellas_ingresadas):
         if solucion[x] == adivinanza[x]:
             posicion_correcta+=1
