@@ -61,6 +61,7 @@ while intentos_totales > 0:
                 puntos_negativos+=1100 #Penalizamos por pedir ayuda
                 break
         continue    
+    
     # Se "penaliza" al user por no ingresar la longitud correcta o estar repetido
     if len(adivinanza) != cantidad_de_botellas_ingresadas:
         intentos_totales-= 1
@@ -119,6 +120,6 @@ while intentos_totales > 0:
         print(f"Tiene {botellas_correctas} correctos. Le quedan {intentos_restantes} intentos")
     
     # Caso user pierda, se le acaban los intentos, se termina el juego y se muestra cual era el orden correcto
-    if intentos_totales == 0:
-        print(f"Tiene {botellas_correctas}. Le quedan {intentos_restantes} intentos")
-        print(f"Ha perdido, la respuesta era {solucion}")
+if intentos_totales == 0:
+    #print(f"Tiene {botellas_correctas}. Le quedan {intentos_restantes} intentos")
+    print(f"Ha perdido, la respuesta era {solucion}")
